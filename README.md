@@ -53,7 +53,7 @@ The file structure should looks like that:
 ├── scripts\
 │   ├── rollout.py\
 │   └── train.py\
-└── rlkit\
+├── rlkit\
 │   ├── arguments.py\
 │   ├── rlkit_custom.py\
 │   └── rlkit_utils.py\
