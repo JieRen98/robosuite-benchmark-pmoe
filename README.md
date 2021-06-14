@@ -4,10 +4,12 @@ Welcome to the robosuite v1.0 benchmarking repository! This repo is intended for
 ## Getting Started
 Our benchmark consists of training [Soft Actor-Critic](https://arxiv.org/abs/1812.05905) agents implemented from [rlkit](https://github.com/vitchyr/rlkit). We built on top of rlkit's standard functionality to provide extra features useful for our purposes, such as video recording of rollouts and asymmetrical exploration / evaluation horizons.
 
+Beside the proposed agents in the origin [robosuite-benchmark](https://github.com/ARISE-Initiative/robosuite-benchmark), this repo also includes the [Probabilistic Mixture-of-Experts](https://arxiv.org/abs/2104.09122) agent.
+
 To begin, start by cloning this repository from your terminal and moving into this directory:
 ```bash
-$ git clone https://github.com/ARISE-Initiative/robosuite-benchmark.git
-$ cd robosuite-benchmark
+$ git clone https://github.com/JieRen98/robosuite-benchmark-pmoe.git
+$ cd robosuite-benchmark-pmoe
 ```
 
 Our benchmarking environment consists of a Conda-based Python virtual environment running Python 3.7.4, and is supported for Mac OS X and Linux. Other versions / machine configurations have not been tested. [Conda](https://docs.conda.io/en/latest/) is a useful tool for creating virtual environments for Python, and can be installed [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/).
@@ -15,19 +17,48 @@ Our benchmarking environment consists of a Conda-based Python virtual environmen
 After installing Conda, create a new virtual environment using our pre-configured environment setup, and activate this environment. Note that we have to unfortunately do a two-step installation process in order to avoid some issues with precise versions:
 
 ```bash
-$ conda env create -f environments/rb_bench_[linux/mac]_env.yml
+$ conda env create -f environments/env.yml
 $ source activate rb_bench
-$ pip install -r requirements.txt
 ```
 
-Next, we must install rlkit. Go the the [rlkit](https://github.com/vitchyr/rlkit) repository and clone and install it, in your preferred directory. Note that we currently require a specific rlkit version as the current release is incompatible with our repo:
+Next, we must install the **modified** rlkit: RLkit-PMOE. Go the [rlkit-pmoe](https://github.com/JieRen98/rlkit-pmoe) repository and clone and install it, in your preferred directory. 
+
+Copy the rlkit directory in rlkit-pmoe repo to the working directory.
 ```bash
 $ (rb_bench) cd <PATH_TO_YOUR_RLKIT_LOCATION>
 $ (rb_bench) git clone https://github.com/vitchyr/rlkit.git
 $ (rb_bench) cd rlkit
-$ (rb_bench) git reset --hard f136e140a57078c4f0f665051df74dffb1351f33
-$ (rb_bench) pip install -e .
+$ (rb_bench) git clone https://github.com/JieRen98/rlkit-pmoe.git
+$ (rb_bench) cp rlkit-pmoe/rlkit <PATH_TO_YOUR_WORKING_LOCATION>
 ```
+The file structure should looks like that:
+
+.\
+├── environments\
+│   ├── env.yml\
+├── notebooks\
+│   ├── create_benchmark_environments.ipynb\
+│   └── create_plots.ipynb\
+├── rlkit\
+│   ├── core\
+│   ├── data_management\
+│   ├── envs\
+│   ├── exploration_strategies\
+│   ├── \_\_init\_\_.py\
+│   ├── launchers\
+│   ├── policies\
+│   ├── pythonplusplus.py\
+│   ├── samplers\
+│   ├── torch\
+│   └── util\
+├── scripts\
+│   ├── rollout.py\
+│   └── train.py\
+└── rlkit\
+│   ├── arguments.py\
+│   ├── rlkit_custom.py\
+│   └── rlkit_utils.py\
+└── README.md
 
 Lastly, for visualizing active runs, we utilize rlkit's extraction of [rllab](https://github.com/rll/rllab)'s [viskit](https://github.com/vitchyr/viskit) package:
 ```bash
