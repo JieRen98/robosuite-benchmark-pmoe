@@ -30,7 +30,7 @@ $ (rb_bench) git clone https://github.com/JieRen98/rlkit-pmoe.git
 $ (rb_bench) cd rlkit-pmoe
 $ (rb_bench) cp rlkit <PATH_TO_YOUR_WORKING_LOCATION>
 ```
-The file structure should looks like that:
+The file tree should look like that:
 
 .\
 ├── environments\
