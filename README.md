@@ -26,10 +26,9 @@ Next, we must install the **modified** rlkit: RLkit-PMOE. Go the [rlkit-pmoe](ht
 Copy the rlkit directory in rlkit-pmoe repo to the working directory.
 ```bash
 $ (rb_bench) cd <PATH_TO_YOUR_RLKIT_LOCATION>
-$ (rb_bench) git clone https://github.com/vitchyr/rlkit.git
-$ (rb_bench) cd rlkit
 $ (rb_bench) git clone https://github.com/JieRen98/rlkit-pmoe.git
-$ (rb_bench) cp rlkit-pmoe/rlkit <PATH_TO_YOUR_WORKING_LOCATION>
+$ (rb_bench) cd rlkit-pmoe
+$ (rb_bench) cp rlkit <PATH_TO_YOUR_WORKING_LOCATION>
 ```
 The file structure should looks like that:
 
