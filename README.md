@@ -1,6 +1,9 @@
 # robosuite v1.0 Benchmarking
 Welcome to the robosuite v1.0 benchmarking repository! This repo is intended for ease of replication of our benchmarking results, as well as providing a skeleton for further experiments or benchmarking using our identical training environment.
 
+In addition, this repo replaces the official [rlkit](https://github.com/vitchyr/rlkit) used in [robosuite-benchmark](https://github.com/ARISE-Initiative/robosuite) to [rlkit-pmoe](https://github.com/JieRen98/rlkit-pmoe).
+Package dependency is the same as the origin robosuite-benchmark. Thanks to all the contributors of robosuite-benchmark.
+
 ## Getting Started
 Our benchmark consists of training [Soft Actor-Critic](https://arxiv.org/abs/1812.05905) agents implemented from [rlkit](https://github.com/vitchyr/rlkit). We built on top of rlkit's standard functionality to provide extra features useful for our purposes, such as video recording of rollouts and asymmetrical exploration / evaluation horizons.
 
