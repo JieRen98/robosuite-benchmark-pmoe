@@ -239,6 +239,11 @@ def add_rollout_args():
         '--record_video',
         action='store_true',
         help='If set, will save video of rollouts')
+    parser.add_argument(
+        '--noise_power',
+        type=float,
+        default=0.0,
+        help='The power of noise added to observation')
 
 
 def get_expl_env_kwargs(args):

@@ -106,4 +106,5 @@ if __name__ == "__main__":
         num_episodes=args.num_episodes,
         printout=True,
         use_gpu=args.gpu,
+        noise_power=args.noise_power
     )

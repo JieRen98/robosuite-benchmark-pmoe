@@ -379,6 +379,7 @@ def rollout(
         render=False,
         render_kwargs=None,
         video_writer=None,
+        noise_power=0,
 ):
     """
     Custom rollout function that extends the basic rlkit functionality in the following ways:
@@ -420,6 +421,7 @@ def rollout(
         env.render(**render_kwargs)
 
     while path_length < max_path_length:
+        o += np.random.randn(*o.shape) * noise_power
         a, agent_info = agent.get_action(o)
         next_o, r, d, env_info = env.step(a)
         observations.append(o)

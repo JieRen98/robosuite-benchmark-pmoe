@@ -263,7 +263,8 @@ def simulate_policy(
         video_writer=None,
         num_episodes=np.inf,
         printout=False,
-        use_gpu=False):
+        use_gpu=False,
+        noise_power=0.):
     if printout:
         print("Loading policy...")
 
@@ -271,6 +272,9 @@ def simulate_policy(
     map_location = torch.device("cuda") if use_gpu else torch.device("cpu")
     data = torch.load(model_path, map_location=map_location)
     policy = data['evaluation/policy']
+    if hasattr(policy.stochastic_policy, "k"):
+        from rlkit.torch.PMOEsac.policies import TanhPMOEGaussianPolicy
+        policy.get_actions = TanhPMOEGaussianPolicy.get_actions
 
     if printout:
         print("Policy loaded")
@@ -287,6 +291,7 @@ def simulate_policy(
     ep = 0
 
     # Loop through simulation rollouts
+    total_rewards = []
     while ep < num_episodes:
         if printout:
             print("Rollout episode {}".format(ep))
@@ -296,12 +301,16 @@ def simulate_policy(
             max_path_length=horizon,
             render=render,
             video_writer=video_writer,
+            noise_power=noise_power
         )
 
         # Log diagnostics if supported by env
         if hasattr(env, "log_diagnostics"):
             env.log_diagnostics([path])
         logger.dump_tabular()
+        total_rewards.append(float(path['rewards'].sum()))
+        print(f"This EP's Return: {total_rewards[-1]:.4f}, "
+              f"average Return: {sum(total_rewards) / len(total_rewards):.4f}.")
 
         # Increment episode count
         ep += 1
