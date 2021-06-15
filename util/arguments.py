@@ -8,16 +8,15 @@ from util.rlkit_utils import AGENTS
 
 # Define mapping from string True / False to bool True / False
 BOOL_MAP = {
-    "true" : True,
-    "false" : False
+    "true": True,
+    "false": False
 }
 
 # Define parser
 parser = argparse.ArgumentParser(description='RL args using agents / algs from rlkit and envs from robosuite')
 
 # Add seed arg always
-parser.add_argument(
-    '--seed', type=int, default=1, help='random seed (default: 1)')
+parser.add_argument('--seed', type=int, default=1, help='random seed (default: 1)')
 
 
 def add_robosuite_args():
