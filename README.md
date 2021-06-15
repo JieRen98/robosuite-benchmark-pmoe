@@ -53,7 +53,7 @@ The file tree should look like that:
 ├── scripts\
 │   ├── rollout.py\
 │   └── train.py\
-├── rlkit\
+├── utils\
 │   ├── arguments.py\
 │   ├── rlkit_custom.py\
 │   └── rlkit_utils.py\
@@ -65,7 +65,6 @@ $ (rb_bench) cd <PATH_TO_YOUR_VISKIT_LOCATION>
 $ (rb_bench) git clone https://github.com/vitchyr/viskit.git
 $ (rb_bench) cd viskit
 $ (rb_bench) pip install -e .
-
 ```
 
 ## Running an Experiment
