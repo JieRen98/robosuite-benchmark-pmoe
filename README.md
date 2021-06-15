@@ -5,9 +5,7 @@ In addition, this repo replaces the official [rlkit](https://github.com/vitchyr/
 Package dependency is the same as the origin robosuite-benchmark. Thanks to all the contributors of robosuite-benchmark.
 
 ## Getting Started
-Our benchmark consists of training [Soft Actor-Critic](https://arxiv.org/abs/1812.05905) agents implemented from [rlkit](https://github.com/vitchyr/rlkit). We built on top of rlkit's standard functionality to provide extra features useful for our purposes, such as video recording of rollouts and asymmetrical exploration / evaluation horizons.
-
-Beside the proposed agents in the origin [robosuite-benchmark](https://github.com/ARISE-Initiative/robosuite-benchmark), this repo also includes the [Probabilistic Mixture-of-Experts](https://arxiv.org/abs/2104.09122) agent.
+Our benchmark consists of training [Probabilistic Mixture-of-Experts](https://arxiv.org/abs/2104.09122) agents implemented from [rlkit-pmoe](https://github.com/JieRen98/rlkit-pmoe). We built on top of rlkit-pmoe's standard functionality to provide extra features useful for our purposes, such as video recording of rollouts and asymmetrical exploration / evaluation horizons.
 
 To begin, start by cloning this repository from your terminal and moving into this directory:
 ```bash
