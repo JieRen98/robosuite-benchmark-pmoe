@@ -432,13 +432,13 @@ def rollout(
         # Grab image data to write to video writer if specified
         if video_writer is not None:
             # We need to directly grab full observations so we can get image data
-            full_obs = env._get_observation()
+            full_obs = env._observables
 
             # Grab image data (assume relevant camera name is the first in the env camera array)
-            img = full_obs[env.camera_names[0] + "_image"]
+            img = full_obs[env.camera_names[0] + "_image"].obs
 
             # Write to video writer
-            video_writer.append_data(img[::-1])
+            video_writer.append_data(img)
 
         agent_infos.append(agent_info)
         env_infos.append(env_info)
